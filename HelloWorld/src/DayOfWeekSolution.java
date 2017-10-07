@@ -10,8 +10,6 @@ public class DayOfWeekSolution {
         DayOfWeek dayOfWeek = DayOfWeek.of(calendar.get(Calendar.DAY_OF_WEEK));
         return dayOfWeek.name();
     }
-    
-    
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

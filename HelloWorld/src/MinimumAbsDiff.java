@@ -52,12 +52,40 @@ public class MinimumAbsDiff {
         return n+1;
     }
     
+    static boolean check(int mm, int dd){
+    	int a = mm/10;
+    	int b = mm%10;
+    	int c = dd/10;
+    	int d = dd%10;
+    	if (a==b || a==c || a==d) return false;
+    	if (b==c || b==d) return false;
+    	if (c==d) return false;
+    	return true;
+    }
+    
+    static void print(int n){
+    	int count = 0;
+    	for (int mm=1;mm<=12;mm++){
+    		for (int dd=1;dd<=31;dd++){
+    			if (check(mm,dd)){
+    				count++;
+    				String st = ""+mm;  
+    				if (mm < 10) 
+    					st = "0"+st;
+    				if (dd < 10) 
+    					st = st+"0"+dd;
+    				else 
+    					st = st+dd;
+    				System.out.println(st);
+    				if (count == n) return;
+    			}
+    		}
+    	}
+    }
+    
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] a = new int[]{3, 2, 2, 3};
-		int n = removeElement(a, 3);
-        System.out.print(n);
-
+        print(1000);
 	}		
 
 }
