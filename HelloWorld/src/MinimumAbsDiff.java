@@ -82,6 +82,95 @@ public class MinimumAbsDiff {
     		}
     	}
     }
+ 
+    public static class LinkedListNode{
+        String val;
+        LinkedListNode next;
+    
+        LinkedListNode(String node_value) {
+            val = node_value;
+            next = null;
+        }
+    };
+    
+    static boolean check(LinkedListNode list1, LinkedListNode list2){
+    	LinkedListNode temp1 = list1;
+    	LinkedListNode temp2 = list2;
+    	while (temp1!=null && temp2!=null){
+    		if (temp1.val.equals(temp2.val)){
+    			return false;
+    		}
+    		temp2 = temp2.next;
+    		temp1 = temp1.next;
+    	}
+    	if (temp1!=null || temp2 != null) return false;
+    	return true;
+    };
+    
+    static int find(LinkedListNode list, LinkedListNode sublist) {
+        int index = -1;
+        LinkedListNode start = list;
+        while (start != null){
+        	index++;
+            if (check(start, sublist)) break;
+            start = start.next;
+        }
+        if (start == null) return -1;
+        return index;
+    }
+    
+    public static String convert2(long number, long base)
+    {
+        long quotient = number / base;
+        long remainder = number % base;
+
+        if (quotient == 0) // base case
+        {
+            return Long.toString(remainder);      
+        }
+        else
+        {
+            return convert2(quotient, base) + Long.toString(remainder);
+        }            
+    }
+    
+    static String convert(String s1){
+        String s = Long.toString(Long.parseLong(s1, 10), 7);
+            //convert2(Integer.parseInt(s1), 7);
+    	String out = "";
+    	for (int i=0;i<s.length();i++){
+    		char x = s.charAt(i);
+    		char y = '0';
+    		switch(x) {
+    		   case '1' :
+    		      y = 'a';
+    		      break; // optional
+    		   
+    		   case '2' :
+    			   y = 't';
+    		      // Statements
+    		      break; // optional
+    		   case '3':
+    			   y = 'l';
+    			   break;
+    		   case '4':
+    			   y = 's';
+    			   break;
+    		   case '5':
+    			   y = 'i';
+    			   break;
+    		   case '6':
+    			   y = 'n';
+    			   break;
+    		   // You can have any number of case statements.
+    		   default : // Optional
+    		      // Statements
+    			   y = '0';
+    		}
+    		out = out + y;
+    	}
+    	return out;
+    }
     
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
